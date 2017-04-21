@@ -6,64 +6,61 @@
 
 /* 
  * Archivo:   main.cpp
- * Autor: administrador
+ * Autor: alberto.garcia
  *
- * Creado el 17 de marzo de 2017, a las 10:10
+ * Created on 17th March 2017, at 10:10
  */
 
 /*
- * Vamos a hacer un pequeño juego de hormigas.
+ * Let's make a little ant game.
  */
 
-// Librerías y bibliotecas.
+// Libraries and resources.
 #include <cstdlib>
 #include <iostream>
 #include <ctime>
 
-// Objetos externos
+// Other external code.
 #include "AntNest.h"
+#include "Resource.h"
 
-/* Un struct que represente al hormiguero y todos sus datos.
- * Así puedo crear un número arbitrario de ellos en pocas líneas.
- */
-
-
-
-class Recurso {
-    public:
-        int tipo; // Un número que indica el tipo de recurso.
-        int calidad; // Cantidad de recursos por turno.
-        int propiedad; // El número del hormiguero que lo posee.
-    
-};
 
 int main(int argc, char** argv) {
-    // Generación de los hormigueros.
+    // Creation of the ant nests.
     //for (int i = 0; i < 2; i++) {
-    //    AntNest Nest(i)(50*i, 25*i, 0, true, true, "Hormiguero(i)");
+    //    AntNest Nest(i)(50*i, 25*i, 0, true, true, "ID");
     //}
     AntNest Nest1(50, 25, 0, true, false);
     AntNest Nest2(100, 50, 0, true, false);
     std::cout << Nest1.getID() << "\n";
     std::cout << Nest2.getID() << "\n";
-    std::cout << "Número de obreras 1: " << Nest1.getAntWorker() << "\n";
-    std::cout << "Número de obreras 2: " << Nest2.getAntWorker() << "\n";
-    std::cout << "Número de soldados 1: " << Nest1.getAntSoldier() << "\n";
-    std::cout << "Número de soldados 2: " << Nest2.getAntSoldier() << "\n";
-    std::cout << "Total de hormigas 1: " << Nest1.getAntTotal() << "\n";
-    std::cout << "Total de hormigas 2: " << Nest2.getAntTotal() << "\n";
-    Nest1.harvestFood(); // El hormiguero 1 recoge comida.
-    Nest2.harvestFood(); // El hormiguero 2 recoge comida.
-    std::cout << "El hormiguero 1 recoge " << Nest1.getFood() << " unidades de comida.\n";
-    std::cout << "El hormiguero 2 recoge " << Nest2.getFood() << " unidades de comida.\n";
-    Nest1.getAnts(); // El hormiguero 1 genera hormigas.
-    Nest2.getAnts(); // El hormiguero 1 genera hormigas.
-    std::cout << "Número de obreras 1: " << Nest1.getAntWorker() << "\n";
-    std::cout << "Número de obreras 2: " << Nest2.getAntWorker() << "\n";
-    std::cout << "Número de soldados 1: " << Nest1.getAntSoldier() << "\n";
-    std::cout << "Número de soldados 2: " << Nest2.getAntSoldier() << "\n";
-    std::cout << "Total de hormigas 1: " << Nest1.getAntTotal() << "\n";
-    std::cout << "Total de hormigas 2: " << Nest2.getAntTotal() << "\n";
+    round(Nest1);
+    round(Nest2);
+    std::cout << "\n\n\n";    
+    std::cout << "Nº of workers 1: " << Nest1.getAntWorker() << "\n";
+    std::cout << "Nº of workers 2: " << Nest2.getAntWorker() << "\n";
+    std::cout << "Nº of soldiers 1: " << Nest1.getAntSoldier() << "\n";
+    std::cout << "Nº of soldiers 2: " << Nest2.getAntSoldier() << "\n";
+    std::cout << "Total number of ants 1: " << Nest1.getAntTotal() << "\n";
+    std::cout << "Total number of ants 2: " << Nest2.getAntTotal() << "\n";
+    Nest1.harvestFood(); // The ant nest 1 gathers food.
+    Nest2.harvestFood(); // The ant nest 2 gathers food.
+    std::cout << "The ant nest 1 harvests " << Nest1.getFood() << " food units.\n";
+    std::cout << "The ant nest 2 harvests " << Nest2.getFood() << " food units.\n";
+    Nest1.getAnts(); // The ant nest 1 creates ants.
+    Nest2.getAnts(); // The ant nest 2 creates ants.
+    std::cout << "Nº of workers 1: " << Nest1.getAntWorker() << "\n";
+    std::cout << "Nº of workers 2: " << Nest2.getAntWorker() << "\n";
+    std::cout << "Nº of soldiers 1: " << Nest1.getAntSoldier() << "\n";
+    std::cout << "Nº of soldiers 2: " << Nest2.getAntSoldier() << "\n";
+    std::cout << "Total number of ants 1: " << Nest1.getAntTotal() << "\n";
+    std::cout << "Total number of ants 2: " << Nest2.getAntTotal() << "\n";
+    std::cout << "Colony 1 will eat " << Nest1.getRequiredFood() << " food units.\n";
+    std::cout << "Colony 2 will eat " << Nest2.getRequiredFood() << " food units.\n";
+    Nest1.consumeFood();
+    Nest2.consumeFood();
+    std::cout << "After eating, colony 1 still has " << Nest1.getFood() << " food units.\n";
+    std::cout << "After eating, colony 2 still has " << Nest1.getFood() << " food units.\n";
     return 0;
 }
 
